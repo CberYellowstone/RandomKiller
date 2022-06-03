@@ -1,0 +1,4 @@
+pyinstaller==4.10
+PyWin32==303
+PyQt6>=6.3.0
+chardet>=4.0.0
