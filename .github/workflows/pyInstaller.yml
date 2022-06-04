@@ -33,7 +33,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: GUI
-          path: AutoSubtitle.exe
+          path: RandomKiller.exe
           
       - name: release
         uses: xresloader/upload-to-github-release@v1

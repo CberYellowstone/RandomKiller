@@ -3,4 +3,4 @@ build
 dist
 *.csv
 *.yml
-customClass.py
+customClass.pyx
