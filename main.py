@@ -15,6 +15,11 @@ from customClass import RandomKiller_super
 def isInter(a: list, b: list) -> bool:
 	return bool(list(set(a) & set(b)))
 
+if getattr(sys, 'frozen', False):
+    application_path = sys._MEIPASS
+else:
+    application_path = os.path.dirname(os.path.abspath(__file__))
+
 class suspenseThread(QThread):
     def __init__(self, parent, signal: pyqtSignal, totalList: list, finalStr: str, chosenNum: int, last: bool):
         super().__init__()
@@ -40,6 +45,10 @@ class RandomKiller_class(QtWidgets.QMainWindow, Ui_RandomKiller, RandomKiller_su
 
     def setupUi(self, Config):
         super(RandomKiller_class, self).setupUi(Config)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(f"{application_path}/icon/icon.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.setWindowIcon(icon)
+        self.setIconSize(QtCore.QSize(128, 128))
         Config.setWindowFlags(Qt.WindowType.WindowStaysOnTopHint)
         Config.setWindowOpacity(0.9)
         DesktopSize = self.screen().availableSize()
@@ -70,7 +79,7 @@ class RandomKiller_class(QtWidgets.QMainWindow, Ui_RandomKiller, RandomKiller_su
 
     def readStoredList(self):
         if(not os.path.exists(self.storedListFilePath)):
-            QtWidgets.QMessageBox.critical(self,"未发现默认文件","请导入名单！")
+            QtWidgets.QMessageBox.critical(self,"未发现默认文件","请导入人员名单！")
             self.isStored = False
             self.StartPushButton.setEnabled(False)
             self.luckyList = []

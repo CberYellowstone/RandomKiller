@@ -27,7 +27,7 @@ jobs:
         run: certutil -urlcache -split -f https://github.com/upx/upx/releases/download/v3.96/upx-3.96-win64.zip upx.zip ; 7z x upx.zip
       
       - name: pack
-        run: pyinstaller --upx-dir upx-3.96-win64 RandomKiller.spec -y ; mv dist/RandomKiller.exe ./
+        run: pyinstaller --upx-dir upx-3.96-win64 pyinstaller.exe -F .\main.py --icon=.\icon\icon.ico --add-data "icon\icon.ico;icon\" -n RandomKiller --noconsole -y ; mv dist/RandomKiller.exe ./
       
       - name: upload
         uses: actions/upload-artifact@v3
