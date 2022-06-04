@@ -4,3 +4,4 @@ dist
 *.csv
 *.yml
 customClass.pyx
+*.spec
