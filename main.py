@@ -6,7 +6,8 @@ import sys, os
 import csv
 import chardet
 import secrets
-from PyQt6 import QtGui, QtWidgets
+import keyboard
+from PyQt6 import QtGui, QtWidgets, QtCore
 from PyQt6.QtCore import Qt, QThread, pyqtSignal
 from RandomKiller_style import Ui_RandomKiller
 from customClass import RandomKiller_super
@@ -35,6 +36,7 @@ class suspenseThread(QThread):
 
 class RandomKiller_class(QtWidgets.QMainWindow, Ui_RandomKiller, RandomKiller_super):
     suspenseSignal = pyqtSignal(str)
+    hideHotKeySignal = pyqtSignal()
 
     def setupUi(self, Config):
         super(RandomKiller_class, self).setupUi(Config)
@@ -42,12 +44,15 @@ class RandomKiller_class(QtWidgets.QMainWindow, Ui_RandomKiller, RandomKiller_su
         Config.setWindowOpacity(0.9)
         DesktopSize = self.screen().availableSize()
         Config.move(DesktopSize.width() * 0.3, DesktopSize.height() * 0.3)
+        self.setWindowFlags(QtCore.Qt.WindowType.WindowCloseButtonHint | QtCore.Qt.WindowType.WindowMinimizeButtonHint)
 
     def __init__(self):
         super(RandomKiller_class, self).__init__()
         self.suspenseSignal.connect(self.changeResult)
         self.storedListFilePath = 'storedList.yml'
         self.setupUi(self)
+        self.hideHotKeySignal.connect(self.swichShow)
+        keyboard.add_hotkey('Ctrl + R',lambda: self.hideHotKeySignal.emit())
         self.fortSizeMapping = {1:30, 2:30, 3:30, 4:26, 5:22, 6:18}
         self.updateChosenNum()
         self.NextPushButton.setEnabled(False); self.SkipPushButton.setEnabled(False)
@@ -56,6 +61,12 @@ class RandomKiller_class(QtWidgets.QMainWindow, Ui_RandomKiller, RandomKiller_su
         self.readStoredList()
         self.aliveList = self.luckyList[:]
         self.updateStatus()
+
+    def swichShow(self):
+        if(self.isMinimized()):
+            self.showNormal()
+            return
+        self.showMinimized()
 
     def readStoredList(self):
         if(not os.path.exists(self.storedListFilePath)):

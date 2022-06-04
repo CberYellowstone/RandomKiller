@@ -13,6 +13,8 @@ class Ui_RandomKiller(object):
     def setupUi(self, RandomKiller):
         RandomKiller.setObjectName("RandomKiller")
         RandomKiller.resize(630, 300)
+        RandomKiller.setMinimumSize(QtCore.QSize(630, 0))
+        RandomKiller.setMaximumSize(QtCore.QSize(630, 300))
         self.centralwidget = QtWidgets.QWidget(RandomKiller)
         self.centralwidget.setObjectName("centralwidget")
         self.TitleLabel = QtWidgets.QLabel(self.centralwidget)
@@ -142,11 +144,11 @@ class Ui_RandomKiller(object):
 
     def retranslateUi(self, RandomKiller):
         _translate = QtCore.QCoreApplication.translate
-        RandomKiller.setWindowTitle(_translate("RandomKiller", "MainWindow"))
+        RandomKiller.setWindowTitle(_translate("RandomKiller", "RandomKiller"))
         self.TitleLabel.setText(_translate("RandomKiller", "不重复抽人器：抓取随机幸运儿"))
         self.ResultLabel.setText(_translate("RandomKiller", "<html><head/><body><p><span style=\" color:#595959;\">下一个幸运儿就是你！</span></p></body></html>"))
         self.StartPushButton.setText(_translate("RandomKiller", "开始抓取"))
-        self.HotkeyLabel.setText(_translate("RandomKiller", "呼出 / 隐藏：Ctrl + J"))
+        self.HotkeyLabel.setText(_translate("RandomKiller", "呼出 / 隐藏：Ctrl + R"))
         self.NextPushButton.setText(_translate("RandomKiller", "下一个"))
         self.SkipPushButton.setText(_translate("RandomKiller", "高抬贵手"))
         self.ChosenNumLabel.setText(_translate("RandomKiller", "抓取人数："))

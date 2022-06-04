@@ -10,8 +10,20 @@
     <height>300</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>630</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>630</width>
+    <height>300</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>RandomKiller</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="TitleLabel">
@@ -98,7 +110,7 @@
      <enum>QFrame::Plain</enum>
     </property>
     <property name="text">
-     <string>呼出 / 隐藏：Ctrl + J</string>
+     <string>呼出 / 隐藏：Ctrl + R</string>
     </property>
     <property name="textFormat">
      <enum>Qt::PlainText</enum>

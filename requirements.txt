@@ -2,3 +2,4 @@ pyinstaller==5.1
 PyQt6>=6.3.0
 chardet>=4.0.0
 PyYAML>=6.0
+keyboard==0.13.5
