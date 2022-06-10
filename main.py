@@ -172,6 +172,7 @@ class RandomKiller_class(QtWidgets.QMainWindow, Ui_RandomKiller, RandomKiller_su
         self.aliveList = self.luckyList[:]
         self.ResultLabel.setText("<html><head/><body><p><span style=\" color:#595959;\">下一个幸运儿就是你！</span></p></body></html>")
         self.StartPushButton.setEnabled(True)
+        self.NextPushButton.setEnabled(False); self.SkipPushButton.setEnabled(False)
         self.updateStatus()
 
     def showResult(self, randomNumList: list, last = False):
