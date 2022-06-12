@@ -128,7 +128,8 @@ class RandomKiller_class(QtWidgets.QMainWindow, Ui_RandomKiller, RandomKiller_su
 
     def generateRandomNumList(self):
         self.randomNumList = [secrets.randbelow(len(self.aliveList)) for _ in range(self.chosenNum)]
-        self.doCheat()
+        # self.doCheck()
+        self.doKill()
         # print(self.randomNumList)
         while(1):
             difference = len(self.randomNumList) - len(set(self.randomNumList))
